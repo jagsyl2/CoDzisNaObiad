@@ -1,0 +1,6 @@
+@CoDzisNaObiad_HostAddress = http://localhost:5250
+
+GET {{CoDzisNaObiad_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
