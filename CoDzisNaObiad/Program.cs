@@ -1,8 +1,7 @@
 using CoDzisNaObiad.Application.DtoModels;
-using CoDzisNaObiad.Application.Handlers;
 using CoDzisNaObiad.Application.Interfaces;
 using CoDzisNaObiad.Application.Mappers;
-using CoDzisNaObiad.Application.Queries;
+using CoDzisNaObiad.Application.Queries.GetRecipeByIngredients;
 using CoDzisNaObiad.Infrastructure;
 using CoDzisNaObiad.Infrastructure.ExternalApiClients.Spoonacular;
 using spoonacular.Api;
