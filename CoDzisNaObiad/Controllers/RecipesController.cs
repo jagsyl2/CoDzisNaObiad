@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CoDzisNaObiad.Application.DtoModels;
-using CoDzisNaObiad.Application.Queries;
 using CoDzisNaObiad.Application.Interfaces;
 using CoDzisNaObiad.Application.Enums;
+using CoDzisNaObiad.Application.Queries.GetRecipeByIngredients;
 
 namespace CoDzisNaObiad.API.Controllers
 {
