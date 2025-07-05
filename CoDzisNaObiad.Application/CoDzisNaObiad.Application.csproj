@@ -8,9 +8,11 @@
 
   <ItemGroup>
     <Folder Include="Commands\" />
+    <Folder Include="Mappers\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CoDzisNaObiad.Domain\CoDzisNaObiad.Domain.csproj" />
     <ProjectReference Include="..\CoDzisNaObiad.Infrastructure\CoDzisNaObiad.Infrastructure.csproj" />
   </ItemGroup>
 

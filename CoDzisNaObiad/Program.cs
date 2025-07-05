@@ -1,9 +1,6 @@
-using CoDzisNaObiad.Application.DtoModels;
-using CoDzisNaObiad.Application.Handlers;
-using CoDzisNaObiad.Application.Interfaces;
-using CoDzisNaObiad.Application.Mappers;
-using CoDzisNaObiad.Application.Queries;
-using CoDzisNaObiad.Infrastructure;
+using CoDzisNaObiad.Application;
+using CoDzisNaObiad.Infrastructure.Configurations;
+using CoDzisNaObiad.Infrastructure.Database;
 using CoDzisNaObiad.Infrastructure.ExternalApiClients.Spoonacular;
 using spoonacular.Api;
 using System.Text.Json.Serialization;
@@ -27,9 +24,10 @@ namespace CoDzisNaObiad.API
                 return spoonacularConfig.CreateRecipesSpoonacularClient();
             });
 
-            builder.Services.AddScoped<IRecipeMapper, RecipeMapper>();
-            builder.Services.AddScoped<IQueryHandler<GetRecipeByIngredientsQuery, List<RecipeByIngredientsDto>>, GetRecipeByIngredientsHandler>();
+            builder.Services.AddHandlersConfiguration();
 
+            builder.Services.AddDatabaseConfigurationScope();
+            builder.Services.AddDbContext<CoDzisNaObiadDbContext>();
             builder.Services
                 .AddControllers()
                 .AddJsonOptions(options =>
