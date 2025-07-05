@@ -1,4 +1,4 @@
-﻿namespace CoDzisNaObiad.Application.Enums
+﻿namespace CoDzisNaObiad.Domain.Enums
 {
     public enum DishesTypes
     {

@@ -1,9 +1,11 @@
-﻿using CoDzisNaObiad.Infrastructure.ExternalApiClients.ModelsDto;
+﻿using CoDzisNaObiad.Domain.Models;
 
 namespace CoDzisNaObiad.Infrastructure.Interfaces
 {
     public interface IExternalApiClient
     {
-        List<RecipeByIngredientsExternal> GetRecipesByIngredients(string ingredients, bool ignorePantry = true);
+        List<RecipeByIngredients> GetRecipesByIngredients(string ingredients, bool ignorePantry = true);
+        Recipe GetRecipeById(int id);
+
     }
 }

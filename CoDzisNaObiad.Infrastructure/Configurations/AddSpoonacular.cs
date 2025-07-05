@@ -3,7 +3,7 @@ using CoDzisNaObiad.Infrastructure.ExternalApiClients.Spoonacular.Mappers;
 using CoDzisNaObiad.Infrastructure.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CoDzisNaObiad.Infrastructure
+namespace CoDzisNaObiad.Infrastructure.Configurations
 {
     public static class AddSpoonacular
     {
@@ -12,8 +12,8 @@ namespace CoDzisNaObiad.Infrastructure
         {
             services.AddScoped<IExternalApiClient, SpoonacularApiClient>();
             services.AddScoped<ISpoonacularApiClient, SpoonacularApiClient>();
-            services.AddScoped<ISpoonacularClient,  SpoonacularClient>();
-            services.AddScoped<IRecipeSpoonacularMapper,  RecipeSpoonacularMapper>();
+            services.AddScoped<ISpoonacularClient, SpoonacularClient>();
+            services.AddScoped<IRecipeSpoonacularMapper, RecipeSpoonacularMapper>();
 
             return services;
         }

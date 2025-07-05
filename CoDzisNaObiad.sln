@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoDzisNaObiad.Application",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoDzisNaObiad.Infrastructure", "CoDzisNaObiad.Infrastructure\CoDzisNaObiad.Infrastructure.csproj", "{10765B90-B125-4BAB-BAE9-55209CB18A25}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoDzisNaObiad.Domain", "CoDzisNaObiad.Domain\CoDzisNaObiad.Domain.csproj", "{5E8CF516-ADB4-4259-888B-3EEC7EB6656F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{10765B90-B125-4BAB-BAE9-55209CB18A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10765B90-B125-4BAB-BAE9-55209CB18A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10765B90-B125-4BAB-BAE9-55209CB18A25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E8CF516-ADB4-4259-888B-3EEC7EB6656F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E8CF516-ADB4-4259-888B-3EEC7EB6656F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E8CF516-ADB4-4259-888B-3EEC7EB6656F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E8CF516-ADB4-4259-888B-3EEC7EB6656F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

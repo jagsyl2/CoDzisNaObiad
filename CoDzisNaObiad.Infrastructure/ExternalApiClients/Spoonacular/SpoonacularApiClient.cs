@@ -1,4 +1,4 @@
-﻿using CoDzisNaObiad.Infrastructure.ExternalApiClients.ModelsDto;
+﻿using CoDzisNaObiad.Domain.Models;
 using CoDzisNaObiad.Infrastructure.ExternalApiClients.Spoonacular.Mappers;
 using CoDzisNaObiad.Infrastructure.Interfaces;
 using spoonacular.Api;
@@ -24,12 +24,32 @@ namespace CoDzisNaObiad.Infrastructure.ExternalApiClients.Spoonacular
             return _recipesApi.SearchRecipesByIngredients(ingredients, ignorePantry: ignorePantry);
         }
 
-        List<RecipeByIngredientsExternal> IExternalApiClient.GetRecipesByIngredients(string ingredients, bool ignorePantry)
+        List<RecipeByIngredients> IExternalApiClient.GetRecipesByIngredients(string ingredients, bool ignorePantry)
         {
             var recipes = GetRecipesByIngredients(ingredients);
             var mappedRecipies = _recipeMapper.MapRecipiesToRecipiesIngredients(recipes);
 
             return mappedRecipies;
         }
+
+        public RecipeInformation GetRecipeById(int id)
+        {
+             return _recipesApi.GetRecipeInformation(id);
+        }
+
+
+        Recipe IExternalApiClient.GetRecipeById(int id)
+        {
+            var recipe = GetRecipeById(id);
+            if (recipe == null)
+            {
+                return null;
+            }
+
+            var mappedRecipe = _recipeMapper.MapRecipeInformationToRecipe(recipe);
+
+            return mappedRecipe;
+        }
+
     }
 }
