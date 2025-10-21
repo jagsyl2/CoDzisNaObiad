@@ -2,64 +2,72 @@
 using CoDzisNaObiad.Application.Interfaces;
 using CoDzisNaObiad.Application.Queries.GetRecipeByIngredients;
 using CoDzisNaObiad.Domain.Models;
-using CoDzisNaObiad.Domain.Enums;
 using CoDzisNaObiad.Application.Queries.GetRecipeById;
 using CoDzisNaObiad.Application.Queries.PostRecipe;
+using CoDzisNaObiad.API.Models;
+using CoDzisNaObiad.API.Mappers;
+using System.Net;
 
 namespace CoDzisNaObiad.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class RecipesController : ControllerBase
+    public class RecipesController(
+        IQueryHandler<GetRecipeByIngredientsQuery, List<RecipeByIngredients>> getRecipeByIngredientsHandler,
+        IQueryHandler<GetRecipeByIdQuery, Recipe> getRecipeByIdHandler,
+        IQueryHandler<PostRecipeQuery, int> postRecipe,
+        IRecipesMapper recipesMapper) : ControllerBase
     {
-        private readonly IQueryHandler<GetRecipeByIngredientsQuery, List<RecipeByIngredients>> _getRecipeByIngredientsHandler;
-        private readonly IQueryHandler<GetRecipeByIdQuery, Recipe> _getRecipeByIdHandler;
-        private readonly IQueryHandler<PostRecipeQuery, int> _postRecipe;
-
-        public RecipesController(
-            IQueryHandler<GetRecipeByIngredientsQuery, List<RecipeByIngredients>> getRecipeByIngredientsHandler,
-            IQueryHandler<GetRecipeByIdQuery, Recipe> getRecipeByIdHandler,
-            IQueryHandler<PostRecipeQuery, int> postRecipe)
-        {
-            _getRecipeByIngredientsHandler = getRecipeByIngredientsHandler;
-            _getRecipeByIdHandler = getRecipeByIdHandler;
-            _postRecipe = postRecipe;
-        }
 
         [HttpGet("getRecipesByIngredients/{ingredients}")]
-        public ActionResult<List<RecipeByIngredients>> GetRecipesByIngredients(string ingredients, [FromQuery] RecipeSources sources = RecipeSources.Own)
+        public ActionResult<List<RecipeByIngredients>> GetRecipesByIngredients([FromQuery] GetRecipeByIngredientsResponse response)
         {
-            if (string.IsNullOrEmpty(ingredients)) 
+            try
             {
-                return NoContent();
-            }
+                var recipes = getRecipeByIngredientsHandler.Handle(recipesMapper.GetRecipeByIngredientsResponseToQuery(response));
+                if (recipes == null)
+                {
+                    return BadRequest();
+                }
 
-            var recipes = _getRecipeByIngredientsHandler.Handle(new GetRecipeByIngredientsQuery { Ingredients = ingredients, Sources = sources });
-
-            if (recipes == null)
+                return recipes;
+            } catch (Exception ex)
             {
-                return NoContent();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
-
-            return recipes;
         }
 
         [HttpGet("getRecipeById/{id}")]
-        public ActionResult<Recipe> GetRecipeById(int id, [FromQuery] RecipeSources sources = RecipeSources.Own, [FromQuery] bool saveInDatabase = false)
+        public ActionResult<Recipe> GetRecipeById([FromQuery] GetRecipeByIdResponse response)
         {
-            var recipies = _getRecipeByIdHandler.Handle(new GetRecipeByIdQuery { Id = id, Sources = sources, SaveInDatabase = saveInDatabase});
-            if (recipies == null)
+            try
             {
-                return NoContent();
-            }
+                var recipies = getRecipeByIdHandler.Handle(recipesMapper.GetRecipeByIdResponseToQuery(response));
+                if (recipies == null)
+                {
+                    return BadRequest();
+                }
 
-            return recipies;
+                return recipies;
+            }
+            catch(Exception ex)
+            {
+                //logger.LogError();
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
         }
 
         [HttpPost("addRecipe")]
         public ActionResult<int> PostRecipe([FromBody] PostRecipeQuery recipe)
         {
-            return _postRecipe.Handle(recipe);
+            try
+            {
+                return postRecipe.Handle(recipe);
+            } 
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError); 
+            }
         }
     }
 }

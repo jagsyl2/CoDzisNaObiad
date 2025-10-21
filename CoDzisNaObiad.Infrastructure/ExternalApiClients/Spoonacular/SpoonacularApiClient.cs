@@ -34,10 +34,9 @@ namespace CoDzisNaObiad.Infrastructure.ExternalApiClients.Spoonacular
 
         public RecipeInformation GetRecipeById(int id)
         {
-             return _recipesApi.GetRecipeInformation(id);
+            return _recipesApi.GetRecipeInformation(id);
         }
-
-
+            
         Recipe IExternalApiClient.GetRecipeById(int id)
         {
             var recipe = GetRecipeById(id);
@@ -50,6 +49,5 @@ namespace CoDzisNaObiad.Infrastructure.ExternalApiClients.Spoonacular
 
             return mappedRecipe;
         }
-
     }
 }

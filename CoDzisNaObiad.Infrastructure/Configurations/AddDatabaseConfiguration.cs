@@ -1,5 +1,5 @@
 ﻿using CoDzisNaObiad.Infrastructure.Database.Mappers;
-using CoDzisNaObiad.Infrastructure.Repositories;
+using CoDzisNaObiad.Infrastructure.Database.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CoDzisNaObiad.Infrastructure.Configurations

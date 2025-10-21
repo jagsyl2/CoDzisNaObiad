@@ -1,9 +1,8 @@
 ﻿using CoDzisNaObiad.Domain.Models;
-using CoDzisNaObiad.Infrastructure.Database;
 using CoDzisNaObiad.Infrastructure.Database.Mappers;
 using Microsoft.EntityFrameworkCore;
 
-namespace CoDzisNaObiad.Infrastructure.Repositories
+namespace CoDzisNaObiad.Infrastructure.Database.Repositories
 {
     internal class RecipeRepository : IRecipeRepository
     {
@@ -52,7 +51,7 @@ namespace CoDzisNaObiad.Infrastructure.Repositories
                 .Include(r => r.Ingredients)
                 .ToList();
 
-           return _recipeMapper.MapRecipiesToRecipiesIngredients(recipes, ingredientsArray);
+            return _recipeMapper.MapRecipiesToRecipiesIngredients(recipes, ingredientsArray);
         }
     }
 }

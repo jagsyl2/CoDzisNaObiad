@@ -10,15 +10,7 @@ namespace CoDzisNaObiad.Infrastructure.Database
 
         public CoDzisNaObiadDbContext(DbContextOptions options) : base(options)
         {
-
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CoDzisNaObiad;Trusted_Connection=True;MultipleActiveResultSets=true");
-            }
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
