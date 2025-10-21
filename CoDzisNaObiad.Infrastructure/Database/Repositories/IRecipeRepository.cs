@@ -1,6 +1,6 @@
 ﻿using CoDzisNaObiad.Domain.Models;
 
-namespace CoDzisNaObiad.Infrastructure.Repositories
+namespace CoDzisNaObiad.Infrastructure.Database.Repositories
 {
     public interface IRecipeRepository
     {

@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CoDzisNaObiad.Domain\CoDzisNaObiad.Domain.csproj" />
     <ProjectReference Include="..\CoDzisNaObiad.Infrastructure\CoDzisNaObiad.Infrastructure.csproj" />
   </ItemGroup>

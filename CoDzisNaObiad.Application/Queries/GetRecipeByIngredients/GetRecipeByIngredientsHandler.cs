@@ -1,7 +1,7 @@
 ﻿using CoDzisNaObiad.Application.Interfaces;
 using CoDzisNaObiad.Domain.Models;
+using CoDzisNaObiad.Infrastructure.Database.Repositories;
 using CoDzisNaObiad.Infrastructure.Interfaces;
-using CoDzisNaObiad.Infrastructure.Repositories;
 
 namespace CoDzisNaObiad.Application.Queries.GetRecipeByIngredients
 {

@@ -1,6 +1,6 @@
 ﻿using CoDzisNaObiad.Application.Interfaces;
 using CoDzisNaObiad.Domain.Models;
-using CoDzisNaObiad.Infrastructure.Repositories;
+using CoDzisNaObiad.Infrastructure.Database.Repositories;
 
 namespace CoDzisNaObiad.Application.Queries.PostRecipe
 {

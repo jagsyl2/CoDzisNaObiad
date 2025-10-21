@@ -1,7 +1,12 @@
+using CoDzisNaObiad.API.Mappers;
+using CoDzisNaObiad.API.Validators;
 using CoDzisNaObiad.Application;
 using CoDzisNaObiad.Infrastructure.Configurations;
 using CoDzisNaObiad.Infrastructure.Database;
 using CoDzisNaObiad.Infrastructure.ExternalApiClients.Spoonacular;
+using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 using spoonacular.Api;
 using System.Text.Json.Serialization;
 
@@ -27,13 +32,20 @@ namespace CoDzisNaObiad.API
             builder.Services.AddHandlersConfiguration();
 
             builder.Services.AddDatabaseConfigurationScope();
-            builder.Services.AddDbContext<CoDzisNaObiadDbContext>();
+            builder.Services.AddDbContext<CoDzisNaObiadDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
+            });
             builder.Services
                 .AddControllers()
                 .AddJsonOptions(options =>
                 {
                     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                 });
+            builder.Services.AddFluentValidationAutoValidation();
+            builder.Services.AddValidatorsFromAssemblyContaining<GetRecipeByIdResponseValidator>();
+            builder.Services.AddScoped<IRecipesMapper, RecipesMapper>();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
