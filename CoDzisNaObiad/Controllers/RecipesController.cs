@@ -20,11 +20,11 @@ namespace CoDzisNaObiad.API.Controllers
     {
 
         [HttpGet("getRecipesByIngredients/{ingredients}")]
-        public ActionResult<List<RecipeByIngredients>> GetRecipesByIngredients([FromQuery] GetRecipeByIngredientsResponse response)
+        public ActionResult<List<RecipeByIngredients>> GetRecipesByIngredients([FromQuery] GetRecipeByIngredientsRequest request)
         {
             try
             {
-                var recipes = getRecipeByIngredientsHandler.Handle(recipesMapper.GetRecipeByIngredientsResponseToQuery(response));
+                var recipes = getRecipeByIngredientsHandler.Handle(recipesMapper.GetRecipeByIngredientsRequestToQuery(request));
                 if (recipes == null)
                 {
                     return BadRequest();
@@ -38,11 +38,11 @@ namespace CoDzisNaObiad.API.Controllers
         }
 
         [HttpGet("getRecipeById/{id}")]
-        public ActionResult<Recipe> GetRecipeById([FromQuery] GetRecipeByIdResponse response)
+        public ActionResult<Recipe> GetRecipeById([FromQuery] GetRecipeByIdRequest request)
         {
             try
             {
-                var recipies = getRecipeByIdHandler.Handle(recipesMapper.GetRecipeByIdResponseToQuery(response));
+                var recipies = getRecipeByIdHandler.Handle(recipesMapper.GetRecipeByIdRequestToQuery(request));
                 if (recipies == null)
                 {
                     return BadRequest();

@@ -3,15 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoDzisNaObiad.API.Models
 {
-    public class GetRecipeByIdResponse
+    public class GetRecipeByIngredientsRequest
     {
-        [FromRoute(Name ="id")]
-        public int Id { get; set; }
+        [FromRoute (Name ="ingredients")]
+        public string Ingredients { get; set; }
 
         [FromQuery]
         public RecipeSources Sources { get; set; }
-
-        [FromQuery]
-        public bool SaveInDatabase { get; set; }
     }
 }

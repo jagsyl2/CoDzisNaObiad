@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace CoDzisNaObiad.API.Validators
 {
-    public class GetRecipeByIngredientResponseValidator : AbstractValidator<GetRecipeByIngredientsResponse>
+    public class GetRecipeByIngredientRequestValidator : AbstractValidator<GetRecipeByIngredientsRequest>
     {
-        public GetRecipeByIngredientResponseValidator()
+        public GetRecipeByIngredientRequestValidator()
         {
             RuleFor(x => x.Ingredients)
                 .NotNull()
