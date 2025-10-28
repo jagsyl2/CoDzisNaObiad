@@ -9,6 +9,6 @@ namespace CoDzisNaObiad.API.Models
         public string Ingredients { get; set; }
 
         [FromQuery]
-        public RecipeSources Sources { get; set; }
+        public RecipeSources Source { get; set; }
     }
 }

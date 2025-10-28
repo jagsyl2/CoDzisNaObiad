@@ -27,7 +27,7 @@ namespace CoDzisNaObiad.API.Mappers
             return new GetRecipeByIngredientsQuery()
             {
                 Ingredients = request.Ingredients,
-                Sources = request.Sources
+                Source = request.Source
             };
         }
     }

@@ -1,6 +1,8 @@
+using CoDzisNaObiad.API.Caches;
 using CoDzisNaObiad.API.Mappers;
 using CoDzisNaObiad.API.Validators;
 using CoDzisNaObiad.Application;
+using CoDzisNaObiad.Domain.Interfaces;
 using CoDzisNaObiad.Infrastructure.Configurations;
 using CoDzisNaObiad.Infrastructure.Database;
 using CoDzisNaObiad.Infrastructure.ExternalApiClients.Spoonacular;
@@ -49,6 +51,9 @@ namespace CoDzisNaObiad.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddMemoryCache();
+            builder.Services.AddScoped<ICasheProvider, MemoryCacheProvider>();
 
             var app = builder.Build();
 
