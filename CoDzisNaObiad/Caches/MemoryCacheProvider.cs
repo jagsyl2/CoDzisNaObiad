@@ -24,11 +24,11 @@ namespace CoDzisNaObiad.API.Caches
                 AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(
                     Double.TryParse(_configuration[absoluteExpirationRelativeToNowPath], out var absoluteExpirationRelativeToNow)
                         ? absoluteExpirationRelativeToNow
-                        : 5),
+                        : 60),
                 SlidingExpiration = TimeSpan.FromMinutes(
                     Double.TryParse(configuration[slidingExpirationPath], out var slidingExpiration)
                         ? slidingExpiration
-                        : 1)
+                        : 30)
             };
         }
         
