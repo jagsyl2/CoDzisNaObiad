@@ -6,28 +6,28 @@ namespace CoDzisNaObiad.API.Mappers
 {
     public interface IRecipesMapper
     {
-        GetRecipeByIdQuery GetRecipeByIdResponseToQuery(GetRecipeByIdResponse response);
-        GetRecipeByIngredientsQuery GetRecipeByIngredientsResponseToQuery(GetRecipeByIngredientsResponse response);
+        GetRecipeByIdQuery GetRecipeByIdRequestToQuery(GetRecipeByIdRequest request);
+        GetRecipeByIngredientsQuery GetRecipeByIngredientsRequestToQuery(GetRecipeByIngredientsRequest request);
     }
 
     public class RecipesMapper : IRecipesMapper
     {
-        public GetRecipeByIdQuery GetRecipeByIdResponseToQuery(GetRecipeByIdResponse response)
+        public GetRecipeByIdQuery GetRecipeByIdRequestToQuery(GetRecipeByIdRequest request)
         {
             return new GetRecipeByIdQuery()
             {
-                Id = response.Id,
-                SaveInDatabase = response.SaveInDatabase,
-                Sources = response.Sources,
+                Id = request.Id,
+                SaveInDatabase = request.SaveInDatabase,
+                Sources = request.Sources,
             };
         }
 
-        public GetRecipeByIngredientsQuery GetRecipeByIngredientsResponseToQuery(GetRecipeByIngredientsResponse request)
+        public GetRecipeByIngredientsQuery GetRecipeByIngredientsRequestToQuery(GetRecipeByIngredientsRequest request)
         {
             return new GetRecipeByIngredientsQuery()
             {
                 Ingredients = request.Ingredients,
-                Sources = request.Sources
+                Source = request.Source
             };
         }
     }

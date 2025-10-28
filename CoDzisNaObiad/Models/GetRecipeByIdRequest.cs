@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoDzisNaObiad.API.Models
 {
-    public class GetRecipeByIdResponse
+    public class GetRecipeByIdRequest
     {
         [FromRoute(Name ="id")]
         public int Id { get; set; }

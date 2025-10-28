@@ -20,11 +20,11 @@ namespace CoDzisNaObiad.Application.Queries.GetRecipeByIngredients
 
         public List<RecipeByIngredients>? Handle(GetRecipeByIngredientsQuery query)
         {
-            if (query.Sources == Domain.Enums.RecipeSources.Spoonacular)
+            if (query.Source == Domain.Enums.RecipeSources.Spoonacular)
             {
                 return _externalApiClient.GetRecipesByIngredients(query.Ingredients);
             }
-            if (query.Sources == Domain.Enums.RecipeSources.Own)
+            if (query.Source == Domain.Enums.RecipeSources.Own)
             {
                 return _recipeRepository.GetRecipesByIngredients(query.Ingredients);
             }
